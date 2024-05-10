@@ -9,6 +9,56 @@ package linkedliststarter;
  * @author michael.roy-diclemen
  */
 public class Data implements Comparable{
+
+    /**
+     * @return the code
+     */
+    public String getCode() {
+        return code;
+    }
+
+    /**
+     * @param code the code to set
+     */
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    /**
+     * @return the teacher
+     */
+    public String getTeacher() {
+        return teacher;
+    }
+
+    /**
+     * @param teacher the teacher to set
+     */
+    public void setTeacher(String teacher) {
+        this.teacher = teacher;
+    }
+
+    /**
+     * @return the period
+     */
+    public int getPeriod() {
+        return period;
+    }
+
+    /**
+     * @param period the period to set
+     */
+    public void setPeriod(int period) {
+        this.period = period;
+    }
+    private String code;
+    private String teacher;
+    private int period;
+    public Data(String c, String t, int p){
+        code = c;
+        teacher = t;
+        period = p;
+    }
     
     @Override
     public String toString(){

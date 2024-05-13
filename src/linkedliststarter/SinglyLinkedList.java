@@ -8,17 +8,19 @@ package linkedliststarter;
  *
  * @author michael.roy-diclemen
  */
-public class SinglyLinkedList implements ILinkedList{
+public class SinglyLinkedList implements ILinkedList {
+
     private Node head;
     private Node tail;
 
     /**
      * Return the size of the Linked List
+     *
      * @return an int representing the size
      */
     @Override
     public int size() {
-        throw new UnsupportedOperationException("Not supported yet."); 
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     /**
@@ -26,14 +28,14 @@ public class SinglyLinkedList implements ILinkedList{
      */
     @Override
     public void clear() {
-        throw new UnsupportedOperationException("Not supported yet."); 
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     /**
      * Remove the first instance of item from the linked list
+     *
      * @param item The item to be removed
-     * @return true: if the item was found and removed
-     *         false otherwise
+     * @return true: if the item was found and removed false otherwise
      */
     @Override
     public boolean remove(Data item) {
@@ -42,15 +44,16 @@ public class SinglyLinkedList implements ILinkedList{
 
     /**
      * Remove the item from the particular index
+     *
      * @param index The index of the item to remove
-     * @return true: if the item was found and removed
-     *         false otherwise
+     * @return true: if the item was found and removed false otherwise
      */
     @Override
     public boolean remove(int index) {
-        throw new UnsupportedOperationException("Not supported yet."); 
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
+    // edwar stuff
     /**
      * Returns the first found index of the given item
      * @param item The item to find
@@ -58,7 +61,19 @@ public class SinglyLinkedList implements ILinkedList{
      */
     @Override
     public int indexOf(Data item) {
-        throw new UnsupportedOperationException("Not supported yet."); 
+        Node added = new Node(item);
+        Node indexed = head;
+        int count = 0;
+
+        while (indexed != added) {
+            indexed = indexed.getNext();
+            count++;
+
+            if (indexed == added) {
+                return count;
+            }
+        }
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     /**
@@ -68,29 +83,61 @@ public class SinglyLinkedList implements ILinkedList{
      */
     @Override
     public Data get(int index) {
-        throw new UnsupportedOperationException("Not supported yet."); 
+        Node getting = head;
+        Node indexed = head;
+
+        for (int i = 0; i < index; i++) {
+            indexed = indexed.getNext();
+        }
+        
+        getting.setD(indexed.getD());
+        
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     /**
      * Add the gen item to the end of the linked list
      * @param item Item to add
-     * @return true if successfuuly added, false otherwise
+     * @return true if successfully added, false otherwise
      */
     @Override
     public boolean add(Data item) {
-        throw new UnsupportedOperationException("Not supported yet."); 
+        Node added = new Node(item);
+
+        if (head == null && tail == null) {
+            head = added;
+            tail = added;
+        }
+
+        Node end = head;
+        while (end.getNext() != null) {
+            end = end.getNext();
+        }
+        end.setNext(added);
+        
+        return true;
     }
 
     /**
-     * Add the gen item to  the linked list at the given position
+     * Add the gen item to the linked list at the given position
      * @param item Item to add
      * @param index The position to add the item
-     * @return true if successfuuly added, false otherwise
+     * @return true if successfully added, false otherwise
      */
     @Override
     public boolean add(Data item, int index) {
-        throw new UnsupportedOperationException("Not supported yet."); 
+        Node added = new Node(item);
+        Node indexed = head;
+
+        // use size and compare to index later or something
+        
+        for (int i = 0; i < index; i++) {
+            indexed = indexed.getNext();
+        }
+
+        added.setNext(indexed.getNext());
+        indexed.setNext(added);
+        
+        return true;
     }
-    
-    
 }

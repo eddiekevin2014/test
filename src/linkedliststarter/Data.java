@@ -51,9 +51,11 @@ public class Data implements Comparable{
     public void setPeriod(int period) {
         this.period = period;
     }
+    
     private String code;
     private String teacher;
     private int period;
+    
     public Data(String c, String t, int p){
         code = c;
         teacher = t;

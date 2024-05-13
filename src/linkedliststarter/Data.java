@@ -9,8 +9,41 @@ package linkedliststarter;
  * @author michael.roy-diclemen
  */
 public class Data implements Comparable{
+    private String code;
+    private String teacher;
+    private int period;
+    public Data(String c, String t, int p){
+        code = c;
+        teacher = t;
+        period = p;
+    }
+    
+    @Override
+    public String toString(){
+        return null;
+    }
+    
+//    @Override
+    public boolean equals(Data o){
+        //anything not of type Data is false
+        if (! (o instanceof Data))
+            return false;
+        //add code to properly compare
+        else{
+            if(code.equals(o.getCode()) && teacher.equals(o.getTeacher()) && period == o.getPeriod()){
+                return true;
+            }
+            return false;
+        }
+        
+    }
 
-    /**
+    @Override
+    public int compareTo(Object o) {
+        
+        return 0;
+    }
+        /**
      * @return the code
      */
     public String getCode() {
@@ -50,35 +83,5 @@ public class Data implements Comparable{
      */
     public void setPeriod(int period) {
         this.period = period;
-    }
-    private String code;
-    private String teacher;
-    private int period;
-    public Data(String c, String t, int p){
-        code = c;
-        teacher = t;
-        period = p;
-    }
-    
-    @Override
-    public String toString(){
-        return null;
-    }
-    
-    @Override
-    public boolean equals(Object o){
-        //anything not of type Data is false
-        if (! (o instanceof Data))
-            return false;
-        //add code to properly compare
-        
-        return true;
-        
-    }
-
-    @Override
-    public int compareTo(Object o) {
-        
-        return 0;
     }
 }

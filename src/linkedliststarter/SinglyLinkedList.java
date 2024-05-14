@@ -12,6 +12,7 @@ public class SinglyLinkedList implements ILinkedList {
 
     private Node head;
     private Node tail;
+//    private int lSize;
 
     /**
      * Return the size of the Linked List
@@ -20,7 +21,13 @@ public class SinglyLinkedList implements ILinkedList {
      */
     @Override
     public int size() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        Node temp = head;
+        int size = 0;
+        while(temp.getNext() != null){
+            size++;
+            temp = temp.getNext();
+        }
+        return size;
     }
 
     /**
@@ -28,10 +35,13 @@ public class SinglyLinkedList implements ILinkedList {
      */
     @Override
     public void clear() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        head.setNext(null);
+        tail = null;
+        head = null;
     }
 
     /**
+     * Ernest
      * Remove the first instance of item from the linked list
      *
      * @param item The item to be removed
@@ -39,10 +49,21 @@ public class SinglyLinkedList implements ILinkedList {
      */
     @Override
     public boolean remove(Data item) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        Node temp = head;
+        for(int i = 0; i<size();i++){
+            if(temp.getD().equals(item)){
+                remove(i);
+                return true;
+            }
+            else{
+                temp = temp.getNext();
+            }
+        }
+        return false;
     }
 
     /**
+     * Ernest
      * Remove the item from the particular index
      *
      * @param index The index of the item to remove
@@ -50,7 +71,31 @@ public class SinglyLinkedList implements ILinkedList {
      */
     @Override
     public boolean remove(int index) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        Node temp = head;
+        int size = size();
+        if(index<=size && index>=0){
+            for(int i = 0; i<index;i++){
+                temp = temp.getNext();
+            }
+            if(temp.equals(head)){
+                head = head.getNext();
+                temp.setNext(null);
+            }
+            else if(temp.equals(tail)){
+                temp = head;
+                for(int i = 0; i<size-2;i++){
+                    temp = temp.getNext();
+                }
+                tail = temp;
+                tail.setNext(null);
+            }
+            else{
+                temp.setNext(temp.getNext().getNext());
+                temp.getNext().setNext(null);
+                return true;
+            }
+        }
+        return false;        
     }
 
     // edwar stuff

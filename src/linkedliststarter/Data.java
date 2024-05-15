@@ -21,7 +21,8 @@ public class Data implements Comparable{
     
     @Override
     public String toString(){
-        return null;
+        String retur = ("Code: "+code+" Teacher: "+teacher+" period: "+period);
+        return retur;
     }
     
 //    @Override
